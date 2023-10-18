@@ -214,7 +214,8 @@ class ModbusRtuFramer(ModbusFramer):
                 Log.debug("Frame - not ready")
                 break
             if not self.checkFrame():
-                Log.debug("Frame check failed, ignoring!!")
+                Log.debug("Frame check failed, exception!!")
+                raise InvalidMessageReceivedException("FrameCheckFailed")
                 self.resetFrame()
                 skip_cur_frame = True
                 continue
